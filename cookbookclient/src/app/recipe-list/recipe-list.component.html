@@ -11,8 +11,7 @@
       <div class="mt-3" *ngIf="recipeList.length > 0">
         <table>
           <tr *ngFor="let i of recipeList">
-            <td><a [routerLink]="['/recipe', i.id]">{{ i.name }}</a></td>
-            <!-- (click)="selectRecipe(i.id)" -->
+            <td><a [routerLink]="['/recipe', i.id]">{{ i.title }}</a></td>
           </tr>
         </table>
       </div>

@@ -14,11 +14,7 @@ export class RecipeListComponent implements OnInit {
 
   constructor(private router:Router,
               private recipeSvc: RecipeService) {
-    this.recipeList = [
-      { id: "beefbeef", name: "test name" },
-      { id: "1234abcd", name: "test 2" },
-      { id: "xyz", name: "test 3" }
-    ]
+    this.recipeList = []
   }
 
   ngOnInit(): void {

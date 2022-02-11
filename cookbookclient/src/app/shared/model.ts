@@ -1,6 +1,6 @@
 export interface RecipeHeader {
 	id: string
-	name: string
+	title: string
 }
 
 export interface Recipe extends RecipeHeader {
