@@ -19,7 +19,7 @@ import jakarta.json.JsonObjectBuilder;
 /* Write your request hander in this file */
 
 @RestController
-@RequestMapping(path="/getrecipepreviews", produces=MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path="/recipepreviews", produces=MediaType.APPLICATION_JSON_VALUE)
 @CrossOrigin("*")
 public class RecipesRestController {
 
@@ -30,6 +30,8 @@ public class RecipesRestController {
 
     @GetMapping // Task 4 (from Angular RecipeService)
     public ResponseEntity<String> getReviews() {
+        logging.info("start"); 
+
         JsonArrayBuilder recipeArray = Json.createArrayBuilder();
         for (Recipe recipe : recipeSvc.getAllRecipes()) {
             JsonObjectBuilder recipeBuilder = Json.createObjectBuilder();
