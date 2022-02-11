@@ -1,12 +1,12 @@
-export interface ReviewHeader {
-	uuid: string
-	title: string
+export interface RecipeHeader {
+	id: string
+	name: string
 }
 
-export interface Review extends ReviewHeader {
-	review:string
-  name:string
-  date:string
+export interface Recipe extends RecipeHeader {
+	image:string
+  instruction:string
+  ingredients:string
 }
 
 export interface ResponseMessage {

@@ -60,6 +60,7 @@ public class RecipeService {
 	}
 
 	public Optional<Recipe> getRecipeById(final String id) {
+		logger.info("recipesById: %s" +recipes); 
 		return readLock(() -> Optional.ofNullable(recipesById.get(id)));
 	}
 

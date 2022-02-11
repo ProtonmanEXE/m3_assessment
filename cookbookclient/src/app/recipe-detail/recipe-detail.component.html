@@ -1,0 +1,41 @@
+<div class="container">
+
+  <div class="row" *ngIf="errorMsg.length > 0">
+
+    <h1 class="mb-2">{{ errorMsg }}</h1>
+
+  </div>
+
+
+  <div class="row" *ngIf="errorMsg.length <= 0">
+
+    <h1 class="mb-2"><b>{{ recipe.name }}</b></h1>
+
+    <div class="d-flex justify-content-evenly mb-5">
+      <img src="{{ recipe.image }}">
+
+      <div>
+        <h2>Ingredients:</h2>
+
+        <p>{{ recipe.ingredients }}</p>
+
+      </div>
+    </div>
+
+    <h2>Instructions (How to make):</h2>
+    <p>{{ recipe.instruction }}</p>
+
+  </div>
+
+  <div class="mt-5 mb-3">
+    <button type="button" class="btn btn-dark ms-5" [routerLink]="['/']">
+      Back</button>
+  </div>
+
+</div>
+
+
+
+
+
+
