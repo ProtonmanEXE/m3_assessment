@@ -20,10 +20,10 @@ export class RecipeListComponent implements OnInit {
   ngOnInit(): void {
     // start of Task 4
     this.recipeSvc.getAllRecipes()
-    .then(dbReviewList => {
-      this.recipeList = dbReviewList
-      console.info("this.recipeList = ", this.recipeList )
-    })
+      .then(dbReviewList => {
+        this.recipeList = dbReviewList
+        console.info("this.recipeList = ", this.recipeList )
+      })
     // end of Task 4
   }
 

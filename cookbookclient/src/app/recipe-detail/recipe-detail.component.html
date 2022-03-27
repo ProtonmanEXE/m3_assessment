@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container card mb-3">
 
   <div class="row" *ngIf="errorMsg.length > 0">
 
@@ -6,30 +6,35 @@
 
   </div>
 
-
   <div class="row" *ngIf="errorMsg.length <= 0">
 
-    <h1 class="mb-2"><b>{{ recipe.title }}</b></h1>
+    <h1 class="mb-2"><b><u>{{ recipe.title }}</u></b></h1>
 
     <div class="d-flex justify-content-evenly mb-5">
-      <img src="{{ recipe.image }}">
+      <div class="col-sm-4"><img src="{{ recipe.image }}"></div>
 
-      <div>
+      <div class="col-sm-6">
         <h2>Ingredients:</h2>
 
-        <p>{{ recipe.ingredients }}</p>
-
+        <ol>
+          <li *ngFor="let i of recipe.ingredients">
+            <span>{{ i }}</span>
+          </li>
+        </ol>
       </div>
     </div>
 
-    <h2>Instructions (How to make):</h2>
+    <hr>
+
+    <h2>Instructions for making {{ recipe.title | lowercase }}:</h2>
     <p>{{ recipe.instruction }}</p>
 
-  </div>
-
-  <div class="mt-5 mb-3">
-    <button type="button" class="btn btn-dark ms-5" [routerLink]="['/']">
-      Back</button>
+    <div class="d-flex justify-content-center mb-3">
+      <div class="col-4">
+        <button type="button" class="btn btn-dark" [routerLink]="['/']">
+          Back To Home</button>
+      </div>
+    </div>
   </div>
 
 </div>

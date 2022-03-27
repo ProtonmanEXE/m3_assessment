@@ -30,13 +30,7 @@ export class RecipeDetailComponent implements OnInit {
     this.recipeSvc.getRecipe(this.id)
       .then(r => {
         this.recipe = r
-        console.log("ingredients >>> " +r.ingredients)
-        console.log("ingredients index 2 >>> " +r.ingredients[2])
-        // for (let index = 0; index < r.ingredients.length; index++) {
-        //   console.log("1xingredient >>> " +index)
-        //   this.ingredients.push(r.ingredients[index])
-        //   console.log("ingredients all >>> " +this.ingredients)
-        // }
+        console.log("recipe >>> " +this.recipe)
       }).catch(msg => {
         this.errorMsg = "Recipe not found!"
       })

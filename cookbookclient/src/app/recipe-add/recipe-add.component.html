@@ -5,7 +5,7 @@
 
     <div class="col"></div>
 
-    <div class="col-7">
+    <div class="col-sm-8 card mb-3">
       <h1>Adding a new recipe:</h1>
 
       <form [formGroup]="newRecipe" (ngSubmit)="saveRecipe()">
@@ -18,9 +18,15 @@
           <label class="mt-3"><h4><b>Ingredients:&nbsp;&nbsp;</b></h4></label>
           <button type="button" class="btn btn-info" (click)="addIngredientList()">
             <i class="bi bi-clipboard-plus"></i></button>
-          <div class="input-group" *ngFor="let ingredientControl of ingredientArray.controls; let i = index">
-            <input type="text" class="form-control" formControlName="ingredients">
-            <button class="btn btn-danger" type="button" (click)="removeIngredient(i)">-</button>
+          <div class="input-group mt-1"
+            *ngFor="let ingredientControl of ingredientArray.controls;
+            let i = index">
+            <input type="text" class="form-control" [formControlName]="i">
+            <button class="btn btn-danger"
+              type="button"
+              (click)="removeIngredient(i)"
+              [disabled]="butDisabled">
+              -</button>
           </div>
         </div>
 
@@ -28,7 +34,7 @@
         <textarea class="form-control" rows="4" placeholder="Add instruction(s)"
           formControlName="instruction"></textarea>
 
-        <label class="mt-3"><h4><b>Image:</b></h4></label>
+        <label class="mt-3"><h4><b>Image (URL):</b></h4></label>
         <input type="text" class="form-control" placeholder="Add image URL"
           formControlName="image">
 
@@ -41,12 +47,12 @@
                 class="btn btn-success ms-5"
                 style="font-size:x-large"
                 [disabled]="!newRecipe.valid">
-                Add</button>
+                Add Recipe</button>
             </div>
 
             <div class="mb-3 me-5">
               <button type="button" class="btn btn-dark ms-5" style="font-size:x-large"
-                (click)="goHome()">Back</button>
+                (click)="goHome()">Back To Home</button>
             </div>
           </div>
 

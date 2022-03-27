@@ -1,12 +1,16 @@
+.card {
+  padding: 20px;
+  border-radius: 10px;
+}
+
 table {
   background-color: white;
-  min-width: 600px;
-  max-width: 600px;
+  table-layout: fixed;
+  width: 99%;
   margin: 5px;
   padding: 5px;
   font-size: x-large;
   font-weight: bold;
-  border-radius: 10px;
 }
 
 td {

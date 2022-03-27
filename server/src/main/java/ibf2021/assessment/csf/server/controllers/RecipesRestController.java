@@ -20,7 +20,7 @@ import jakarta.json.JsonObjectBuilder;
 
 @RestController
 @RequestMapping(path="/recipepreviews", produces=MediaType.APPLICATION_JSON_VALUE)
-@CrossOrigin("*")
+// @CrossOrigin("*")
 public class RecipesRestController {
 
     @Autowired

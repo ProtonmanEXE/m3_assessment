@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { RecipeAddComponent } from './recipe-add/recipe-add.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import { FormGuard } from './shared/form.guard';
 
 const routes: Routes = [
   { path: "", component: RecipeListComponent },
   { path: "recipe/:id", component: RecipeDetailComponent },
-  { path: "add", component: RecipeAddComponent },
+  { path: "add", canDeactivate: [FormGuard], component: RecipeAddComponent },
   { path: "**", redirectTo: "", pathMatch: "full" }
 ];
 

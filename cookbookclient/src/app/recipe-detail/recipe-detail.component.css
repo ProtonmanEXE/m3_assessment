@@ -1,6 +1,20 @@
+.card {
+  padding: 20px;
+  border-radius: 10px;
+}
+
 img {
-  width: 300px;
-  height: auto
+  width : 100%;
+  height: auto;
+  max-height: 300px;
+}
+
+ol {
+  font-weight: bold;
+}
+
+ol li span {
+  font-weight: normal;
 }
 
 button {

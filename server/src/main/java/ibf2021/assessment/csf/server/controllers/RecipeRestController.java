@@ -36,50 +36,62 @@ public class RecipeRestController {
 
     private final static Logger logging = LoggerFactory.getLogger(RecipesRestController.class);
 
-    @GetMapping(path="/recipe/{id}") // Task 5 (from Angular RecipeService)
+    @GetMapping(path="/recipe/{id}") 
+    // Task 5 (from Angular RecipeService)
     public ResponseEntity<String> getCustomer(@PathVariable String id) throws IOException {
         
         Optional<Recipe> optRecipe = recipeSvc.getRecipeById(id);
         logging.info("optRecipe > " +optRecipe); 
 
         if (optRecipe.isPresent()) {
-            System.out.println("Recipe exists!");
             Recipe recipe = optRecipe.get();
 
             // construct Json object (payload)
-            JsonArrayBuilder ingredientsBuilder = Json.createArrayBuilder();
-            for (String ingredient: recipe.getIngredients()) {
-                ingredientsBuilder.add(ingredient);
-            }
-            JsonArray ingredients = ingredientsBuilder.build();
+            // JsonArrayBuilder ingredientsBuilder = Json.createArrayBuilder();
+            // for (String ingredient: recipe.getIngredients()) {
+            //     System.out.println("ingredient >>> " +ingredient);
+            //     ingredientsBuilder.add(ingredient);
+            //     logging.info("ingredientsBuilder: %s".formatted(ingredientsBuilder)); 
+            // }
+            // JsonArray ingredients = ingredientsBuilder.build();
+            // JsonObject payload = Json.createObjectBuilder()
+            //     .add("title", recipe.getTitle())
+            //     .add("id", recipe.getId())
+            //     .add("image", recipe.getImage())
+            //     .add("instruction", recipe.getInstruction())
+            //     .add("ingredients", ingredients)
+            //     .build();
+            logging.info("ingredients: %s".formatted(recipe.getIngredients())); 
             JsonObject payload = Json.createObjectBuilder()
                 .add("title", recipe.getTitle())
                 .add("id", recipe.getId())
                 .add("image", recipe.getImage())
                 .add("instruction", recipe.getInstruction())
-                .add("ingredients", ingredients.toString().replace("\\", ""))
+                .add("ingredients", Json.createArrayBuilder(recipe.getIngredients()))
                 .build();
             
             // check REST controller's return (payload)
             logging.info("payload: %s".formatted(payload)); 
-            return ResponseEntity.status(HttpStatus.CREATED).body(payload.toString());
+            return ResponseEntity
+                .status(HttpStatus.CREATED).body(payload.toString());
         } else {
             // if recipe id is non-existent
             logging.info("Recipe does not exist!");
             JsonObject payload = Json.createObjectBuilder()
                 .add("message", "No such id")
                 .build();
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(payload.toString());
+            return ResponseEntity
+                .status(HttpStatus.NOT_FOUND).body(payload.toString());
         }
 
     }
 
-    @PostMapping(path="/newrecipe", consumes=MediaType.APPLICATION_JSON_VALUE) 
+    @PostMapping(path="/newrecipe", consumes=MediaType.APPLICATION_JSON_VALUE)
+    // Task 6 (from Angular RecipeService)
     public ResponseEntity<String> saveReviews(@RequestBody Recipe recipe) {
-        // Task 6 (from Angular RecipeService)
+
         recipeSvc.addRecipe(recipe);
         logging.info("all recipes: %s".formatted(recipeSvc.getAllRecipes())); 
-
         return ResponseEntity.status(HttpStatus.CREATED).body("");
 
     }
